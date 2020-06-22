@@ -24,4 +24,8 @@
     <string name="menu_share">Compartilhar</string>
     <string name="text_share_link">Que legal os sons da bicharada. Baixe o app você também, é muito divertido!\n link</string>
     <string name="menu_about">Sobre</string>
+    <string name="created_at">App criado por Luiz Magno M. de Sousa.\nImagens e Arte Design por freepik.com.\nVersão 1.0.0</string>
+    <string name="avalie_app">Avaliar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="link_to_avalie">https://www.google.com</string>
 </resources>

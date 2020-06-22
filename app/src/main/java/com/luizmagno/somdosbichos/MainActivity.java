@@ -1,17 +1,24 @@
 package com.luizmagno.somdosbichos;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -94,14 +101,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (id == R.id.menu_share) {
 
-            Intent sendIntent = new Intent();
-            sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.text_share_link));
-            sendIntent.setType("text/plain");
-            Intent shareIntent = Intent.createChooser(sendIntent, null);
-            startActivity(shareIntent);
+            startShared(getResources().getString(R.string.text_share_link));
 
         } else if (id == R.id.menu_about) {
+
+            showDialogAbout();
 
         }
 
@@ -220,5 +224,48 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mp.stop();
         }
         mp.release();
+    }
+
+    private void startShared(String str_to_share) {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, str_to_share);
+        sendIntent.setType("text/plain");
+        Intent shareIntent = Intent.createChooser(sendIntent, null);
+        startActivity(shareIntent);
+    }
+
+    private void showDialogAbout(){
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View inflate = inflater.inflate(R.layout.layout_about, null);
+        builder.setView(inflate);
+        builder.create();
+        builder.show();
+
+        //Buttons
+        Button btnAvaliarApp = inflate.findViewById(R.id.buttonAvalieInAboutId);
+        Button btnSharedApp = inflate.findViewById(R.id.buttonShareInAboutId);
+
+        btnSharedApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startShared(getResources().getString(R.string.text_share_link));
+            }
+        });
+
+        btnAvaliarApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openUrl(getResources().getString(R.string.link_to_avalie));
+            }
+        });
+    }
+
+    private void openUrl (String url) {
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
     }
 }
