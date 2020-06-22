@@ -2,7 +2,6 @@ package com.luizmagno.somdosbichos;
 
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
-import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -103,8 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(shareIntent);
 
         } else if (id == R.id.menu_about) {
-            Intent i = new Intent(this, AboutActivity.class);
-            startActivity(i);
+
         }
 
         return super.onOptionsItemSelected(item);
