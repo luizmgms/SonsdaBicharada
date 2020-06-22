@@ -1,6 +1,6 @@
 package com.luizmagno.somdosbichos;
 
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
@@ -18,11 +18,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.util.zip.Inflater;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private MediaPlayer mp;
+    ArrayList<Integer> animals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
         collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(android.R.color.white));
 
+        //Player
         mp = new MediaPlayer();
         mp.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
@@ -46,46 +48,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        ImageView cao = findViewById(R.id.caoId);
-        ImageView gato = findViewById(R.id.gatoId);
-        ImageView leao = findViewById(R.id.leaoId);
-        ImageView macaco = findViewById(R.id.macacoId);
-        ImageView ovelha = findViewById(R.id.ovelhaId);
-        ImageView vaca = findViewById(R.id.vacaId);
-        ImageView elefante = findViewById(R.id.elefanteId);
-        ImageView pato = findViewById(R.id.patoId);
-        ImageView porco = findViewById(R.id.porcoId);
-        ImageView galo = findViewById(R.id.galoId);
-        ImageView abelha =findViewById(R.id.abelhaId);
-        ImageView galinha = findViewById(R.id.galinhaId);
-        ImageView baleia = findViewById(R.id.baleiaId);
-        ImageView golfinho = findViewById(R.id.golfinhoId);
-        ImageView pintinho = findViewById(R.id.pintoId);
-        ImageView cavalo = findViewById(R.id.cavaloId);
-        ImageView sapo = findViewById(R.id.sapoId);
-        ImageView passaro = findViewById(R.id.passaroId);
-        ImageView rato = findViewById(R.id.ratoId);
+        //Animais
+        animals = new ArrayList<>();
+        fillArray();
+        setClickArray();
 
-        cao.setOnClickListener(this);
-        gato.setOnClickListener(this);
-        leao.setOnClickListener(this);
-        macaco.setOnClickListener(this);
-        ovelha.setOnClickListener(this);
-        vaca.setOnClickListener(this);
-        elefante.setOnClickListener(this);
-        pato.setOnClickListener(this);
-        porco.setOnClickListener(this);
-        galo.setOnClickListener(this);
-        abelha.setOnClickListener(this);
-        galinha.setOnClickListener(this);
-        baleia.setOnClickListener(this);
-        golfinho.setOnClickListener(this);
-        pintinho.setOnClickListener(this);
-        cavalo.setOnClickListener(this);
-        sapo.setOnClickListener(this);
-        passaro.setOnClickListener(this);
-        rato.setOnClickListener(this);
+    }
 
+    private void setClickArray() {
+        for (int IdAnimal: animals) {
+            findViewById(IdAnimal).setOnClickListener(this);
+        }
+    }
+
+    private void fillArray() {
+        animals.add(R.id.caoId);
+        animals.add(R.id.gatoId);
+        animals.add(R.id.leaoId);
+        animals.add(R.id.macacoId);
+        animals.add(R.id.ovelhaId);
+        animals.add(R.id.vacaId);
+        animals.add(R.id.elefanteId);
+        animals.add(R.id.patoId);
+        animals.add(R.id.porcoId);
+        animals.add(R.id.galoId);
+        animals.add(R.id.abelhaId);
+        animals.add(R.id.galinhaId);
+        animals.add(R.id.baleiaId);
+        animals.add(R.id.golfinhoId);
+        animals.add(R.id.pintoId);
+        animals.add(R.id.cavaloId);
+        animals.add(R.id.sapoId);
+        animals.add(R.id.passaroId);
+        animals.add(R.id.ratoId);
     }
 
     @Override
