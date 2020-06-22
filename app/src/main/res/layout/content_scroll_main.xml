@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:src="@drawable/cachorro_b"
+            android:contentDescription="@string/cao"
             app:layout_constraintEnd_toStartOf="@+id/gatoId"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,6 +30,7 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:src="@drawable/gato_b"
+            android:contentDescription="@string/gato"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/caoId"
             app:layout_constraintTop_toTopOf="parent" />
@@ -39,6 +41,7 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:src="@drawable/leao_b"
+            android:contentDescription="@string/leao"
             app:layout_constraintEnd_toStartOf="@+id/macacoId"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/caoId"/>
@@ -49,6 +52,7 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:src="@drawable/macaco_b"
+            android:contentDescription="@string/macaco"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/leaoId"
             app:layout_constraintTop_toBottomOf="@id/gatoId" />
@@ -59,6 +63,7 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:src="@drawable/elefante_b"
+            android:contentDescription="@string/elefante"
             app:layout_constraintEnd_toStartOf="@+id/ovelhaId"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/leaoId"/>
@@ -69,9 +74,163 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:src="@drawable/ovelha_b"
+            android:contentDescription="@string/ovelha"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/elefanteId"
             app:layout_constraintTop_toBottomOf="@+id/macacoId" />
+
+        <ImageView
+            android:id="@+id/vacaId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/vaca_b"
+            android:contentDescription="@string/vaca"
+            app:layout_constraintEnd_toStartOf="@+id/patoId"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/elefanteId"/>
+
+        <ImageView
+            android:id="@+id/patoId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/pato_b"
+            android:contentDescription="@string/pato"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/vacaId"
+            app:layout_constraintTop_toBottomOf="@+id/ovelhaId" />
+
+        <ImageView
+            android:id="@+id/galinhaId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/galinha_b"
+            android:contentDescription="@string/galinha"
+            app:layout_constraintEnd_toStartOf="@+id/galoId"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vacaId"/>
+
+        <ImageView
+            android:id="@+id/galoId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/galo_b"
+            android:contentDescription="@string/galo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/galinhaId"
+            app:layout_constraintTop_toBottomOf="@+id/patoId" />
+
+        <ImageView
+            android:id="@+id/pintoId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/pinto_b"
+            android:contentDescription="@string/pintinho"
+            app:layout_constraintEnd_toStartOf="@+id/passaroId"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/galinhaId"/>
+
+        <ImageView
+            android:id="@+id/passaroId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/passaro_b"
+            android:contentDescription="@string/passaro"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/pintoId"
+            app:layout_constraintTop_toBottomOf="@+id/galoId" />
+
+        <ImageView
+            android:id="@+id/abelhaId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/abelha_b"
+            android:contentDescription="@string/abelha"
+            app:layout_constraintEnd_toStartOf="@+id/sapoId"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pintoId"/>
+
+        <ImageView
+            android:id="@+id/sapoId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/sapo_b"
+            android:contentDescription="@string/sapo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/abelhaId"
+            app:layout_constraintTop_toBottomOf="@+id/passaroId" />
+
+        <ImageView
+            android:id="@+id/porcoId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/porco_b"
+            android:contentDescription="@string/porco"
+            app:layout_constraintEnd_toStartOf="@+id/ratoId"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/abelhaId"/>
+
+        <ImageView
+            android:id="@+id/ratoId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/rato_b"
+            android:contentDescription="@string/rato"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/porcoId"
+            app:layout_constraintTop_toBottomOf="@+id/sapoId" />
+
+        <ImageView
+            android:id="@+id/golfinhoId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/golfinho_b"
+            android:contentDescription="@string/golfinho"
+            app:layout_constraintEnd_toStartOf="@+id/baleiaId"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/porcoId"/>
+
+        <ImageView
+            android:id="@+id/baleiaId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/baleia_b"
+            android:contentDescription="@string/baleia"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/golfinhoId"
+            app:layout_constraintTop_toBottomOf="@+id/ratoId" />
+
+        <ImageView
+            android:id="@+id/cavaloId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/cavalo_b"
+            android:contentDescription="@string/cavalo"
+            app:layout_constraintEnd_toEndOf="@+id/golfinhoId"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/golfinhoId"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/design_free_pik"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/direitos_desc"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cavaloId"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </android.support.constraint.ConstraintLayout>
 

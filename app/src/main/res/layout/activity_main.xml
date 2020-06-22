@@ -17,11 +17,13 @@
         android:theme="@style/AppTheme">
 
         <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapseToolbaInMainId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
             app:contentScrim="@color/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+            android:theme="@style/AppTheme.AppBarOverlay"
             app:toolbarId="@+id/toolbarInMainId">
 
             <ImageView
@@ -38,7 +40,7 @@
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
                 app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
-                app:popupTheme="@style/AppTheme"/>
+                app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 

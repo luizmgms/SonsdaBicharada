@@ -7,12 +7,11 @@
     <string name="macaco">Macaco</string>
     <string name="ovelha">Ovelha</string>
     <string name="vaca">Vaca</string>
-    <string name="direitos">freepik.com</string>
     <string name="galinha">Galinha</string>
     <string name="pintinho">Pintinho</string>
     <string name="baleia">Baleia</string>
     <string name="golfinho">Golfinho</string>
-    <string name="direitos_desc">Todos os direitos reservados</string>
+    <string name="direitos_desc">Designed by freepik.com - Todos os direitos reservados</string>
     <string name="elefante">Elefante</string>
     <string name="pato">Pato</string>
     <string name="porco">Porco</string>
@@ -22,4 +21,7 @@
     <string name="cavalo">Cavalo</string>
     <string name="galo">Galo</string>
     <string name="abelha">Abelha</string>
+    <string name="menu_share">Compartilhar</string>
+    <string name="text_share_link">Que legal os sons da bicharada. Baixe o app você também, é muito divertido!\n link</string>
+    <string name="menu_about">Sobre</string>
 </resources>

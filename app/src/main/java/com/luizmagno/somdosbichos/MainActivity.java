@@ -1,43 +1,36 @@
 package com.luizmagno.somdosbichos;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-public class MainActivity extends Activity implements View.OnClickListener{
-
-    private ImageView cao;
-    private ImageView gato;
-    private ImageView leao;
-    private ImageView macaco;
-    private ImageView ovelha;
-    private ImageView vaca;
-    private ImageView elefante;
-    private ImageView pato;
-    private ImageView porco;
-    private ImageView galo;
-    private ImageView abelha;
-    private ImageView galinha;
-    private ImageView baleia;
-    private ImageView golfinho;
-    private ImageView pintinho;
-    private ImageView cavalo;
-    private ImageView sapo;
-    private ImageView passaro;
-    private ImageView rato;
     private MediaPlayer mp;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //toolbar
+        Toolbar toolbar = findViewById(R.id.toolbarInMainId);
+        setSupportActionBar(toolbar);
+
+        //CollapseToolbar
+        CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapseToolbaInMainId);
+        collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
+        collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(android.R.color.white));
 
         mp = new MediaPlayer();
         mp.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -47,32 +40,32 @@ public class MainActivity extends Activity implements View.OnClickListener{
             }
         });
 
-        cao = findViewById(R.id.caoId);
-        gato = findViewById(R.id.gatoId);
-        leao = findViewById(R.id.leaoId);
-        macaco = findViewById(R.id.macacoId);
-        ovelha = findViewById(R.id.ovelhaId);
-        /*vaca = findViewById(R.id.vacaId);
-        elefante = findViewById(R.id.elefanteId);
-        pato = findViewById(R.id.patoId);
-        porco = findViewById(R.id.porcoId);
-        galo = findViewById(R.id.galoId);
-        abelha =findViewById(R.id.abelhaId);
-        galinha = findViewById(R.id.galinhaId);
-        baleia = findViewById(R.id.baleiaId);
-        golfinho = findViewById(R.id.golfinhoId);
-        pintinho = findViewById(R.id.pintinhoId);
-        cavalo = findViewById(R.id.cavaloId);
-        sapo = findViewById(R.id.sapoId);
-        passaro = findViewById(R.id.passaroId);
-        rato = findViewById(R.id.ratoId);*/
+        ImageView cao = findViewById(R.id.caoId);
+        ImageView gato = findViewById(R.id.gatoId);
+        ImageView leao = findViewById(R.id.leaoId);
+        ImageView macaco = findViewById(R.id.macacoId);
+        ImageView ovelha = findViewById(R.id.ovelhaId);
+        ImageView vaca = findViewById(R.id.vacaId);
+        ImageView elefante = findViewById(R.id.elefanteId);
+        ImageView pato = findViewById(R.id.patoId);
+        ImageView porco = findViewById(R.id.porcoId);
+        ImageView galo = findViewById(R.id.galoId);
+        ImageView abelha =findViewById(R.id.abelhaId);
+        ImageView galinha = findViewById(R.id.galinhaId);
+        ImageView baleia = findViewById(R.id.baleiaId);
+        ImageView golfinho = findViewById(R.id.golfinhoId);
+        ImageView pintinho = findViewById(R.id.pintoId);
+        ImageView cavalo = findViewById(R.id.cavaloId);
+        ImageView sapo = findViewById(R.id.sapoId);
+        ImageView passaro = findViewById(R.id.passaroId);
+        ImageView rato = findViewById(R.id.ratoId);
 
         cao.setOnClickListener(this);
         gato.setOnClickListener(this);
         leao.setOnClickListener(this);
         macaco.setOnClickListener(this);
         ovelha.setOnClickListener(this);
-        /*vaca.setOnClickListener(this);
+        vaca.setOnClickListener(this);
         elefante.setOnClickListener(this);
         pato.setOnClickListener(this);
         porco.setOnClickListener(this);
@@ -86,7 +79,35 @@ public class MainActivity extends Activity implements View.OnClickListener{
         sapo.setOnClickListener(this);
         passaro.setOnClickListener(this);
         rato.setOnClickListener(this);
-*/
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.menu_share) {
+
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.text_share_link));
+            sendIntent.setType("text/plain");
+            Intent shareIntent = Intent.createChooser(sendIntent, null);
+            startActivity(shareIntent);
+
+        } else if (id == R.id.menu_about) {
+            Intent i = new Intent(this, AboutActivity.class);
+            startActivity(i);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -122,9 +143,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
                     afd = getResources().openRawResourceFd(R.raw.ovelha);
                     Toast.makeText(this, R.string.ovelha, Toast.LENGTH_SHORT).show();
                     break;
-                /*case R.id.vacaId:
+                case R.id.vacaId:
                     afd = getResources().openRawResourceFd(R.raw.vaca);
-                    Toast.makeText(this, R.string.vaca_str, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.vaca, Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.elefanteId:
                     afd = getResources().openRawResourceFd(R.raw.elefante);
@@ -158,7 +179,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                     afd = getResources().openRawResourceFd(R.raw.golfinho);
                     Toast.makeText(this, R.string.golfinho, Toast.LENGTH_SHORT).show();
                     break;
-                case R.id.pintinhoId:
+                case R.id.pintoId:
                     afd = getResources().openRawResourceFd(R.raw.pinto);
                     Toast.makeText(this, R.string.pintinho, Toast.LENGTH_SHORT).show();
                     break;
@@ -177,7 +198,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 case R.id.ratoId:
                     afd = getResources().openRawResourceFd(R.raw.rato);
                     Toast.makeText(this, R.string.rato, Toast.LENGTH_SHORT).show();
-                    break;*/
+                    break;
                 default:
                     Toast.makeText(this, "Ocorreu um Erro!", Toast.LENGTH_SHORT).show();
                     break;
