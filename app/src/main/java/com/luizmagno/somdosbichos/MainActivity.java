@@ -102,6 +102,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             showDialogAbout();
 
+        } else if (id == R.id.menu_policy) {
+
+            showDialogPolicy();
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -262,5 +266,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
+    }
+
+    private void showDialogPolicy() {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View inflate = inflater.inflate(R.layout.layout_policy, null);
+        builder.setView(inflate);
+        builder.create();
+        builder.show();
     }
 }
