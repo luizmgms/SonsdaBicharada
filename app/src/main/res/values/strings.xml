@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Sons da Bicharada</string>
     <string name="placa_desc">Sons da Bicharada - Designed by freepik.com</string>
-    <string name="cao">Cão</string>
+    <string name="cao">Cachorro</string>
     <string name="gato">Gato</string>
     <string name="leao">Leão</string>
     <string name="macaco">Macaco</string>
@@ -29,57 +29,9 @@
     <string name="cancel">Cancelar</string>
     <string name="link_to_avalie">https://play.google.com/store/apps/details?id=com.luizmagno.somdosbichos</string>
     <string name="menu_policy">Política de Privacidade</string>
-    <string name="policy">"Política de Privacidade\n\n"
-        "A sua privacidade é importante para nós. É política do App Sons da Bicharada respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no App Sons da Bicharada, e outros sites que possuímos e operamos.\n\n"
-
-        "Não solicitamos qualquer tipo de informações pessoais para lhe fornecer um serviço.\n\n"
-
-        "Não retemos qualquer tipo de informações para fornecer o App Sons da Bicharada.\n\n"
-
-        "Não compartilhamos informações de identificação pessoal publicamente ou com terceiros, exceto quando exigido por lei.\n\n"
-
-        "O nosso App pode ter links para sites externos que não são operados por nós. Esteja ciente de que não temos controle sobre o conteúdo e práticas desses sites e não podemos aceitar responsabilidade por suas respectivas políticas de privacidade.\n\n"
-
-        "Você é livre para recusar a nossa política de privacidade.\n\n"
-
-        "O uso continuado do App Sons da Bicharada será considerado como aceitação de nossas práticas em torno de privacidade e informações pessoais. Se você tiver alguma dúvida sobre como lidamos com dados do usuário e informações pessoais, entre em contato conosco.\n\n"
-
-        "Mais informações\n\n"
-
-        "Esperemos que esteja esclarecido e, como mencionado anteriormente, se não estiver de acordo basta recusar a instalação do App Sons da Bicharada.\n\n"
-
-        "1. Termos de Uso\n\n"
-        "Ao instalar o App Sons da Bicharada, você  concorda em cumprir estes termos de serviço, todas as leis e regulamentos aplicáveis ​​e concorda que é responsável pelo cumprimento de todas as leis locais aplicáveis. Os materiais contidos neste site são protegidos pelas leis de direitos autorais e marcas comerciais aplicáveis.\n\n"
-
-        "2. Uso de Licença\n\n"
-        "É concedida permissão para baixar temporariamente uma cópia dos materiais (informações ou software) no repositório do App Sons da Bicharada , apenas para visualização transitória pessoal e não comercial. Esta é a concessão de uma licença, não uma transferência de título e, sob esta licença, você não pode:\n\n"
-
-        "\t - modificar ou copiar os materiais;\n"
-        "\t - usar os materiais para qualquer finalidade comercial ou para exibição pública (comercial ou não comercial);\n"
-        "\t - tentar descompilar ou fazer engenharia reversa de qualquer software contido no App Sons da Bicharada;\n"
-        "\t - remover quaisquer direitos autorais ou outras notações de propriedade dos materiais; ou\n"
-        "\t - transferir os materiais para outra pessoa ou ‘espelhe’ os materiais em qualquer outro servidor.\n\n"
-        "Esta licença será automaticamente rescindida se você violar alguma dessas restrições e poderá ser rescindida pelo App Sons da Bicharada a qualquer momento. Ao encerrar a visualização desses materiais ou após o término desta licença, você deve apagar todos os materiais baixados em sua posse, seja em formato eletrônico ou impresso.\n\n"
-
-        "3. Isenção de responsabilidade\n\n"
-        "Os materiais no repositório do App Sons da Bicharada são fornecidos ‘como estão’. Sons da Bicharada não oferece garantias, expressas ou implícitas, e, por este meio, isenta e nega todas as outras garantias, incluindo, sem limitação, garantias implícitas ou condições de comercialização, adequação a um fim específico ou não violação de propriedade intelectual ou outra violação de direitos.\n\n"
-        "Além disso, o App Sons da Bicharada não garante ou faz qualquer representação relativa à precisão, aos resultados prováveis ​​ou à confiabilidade do uso dos materiais.\n\n"
-        "4. Limitações\n\n"
-        "Em nenhum caso o App Sons da Bicharada ou seus fornecedores serão responsáveis ​​por quaisquer danos (incluindo, sem limitação, danos por perda de dados ou lucro ou devido a interrupção dos negócios) decorrentes do uso ou da incapacidade de usar os materiais do App Sons da Bicharada, mesmo que o App Sons da Bicharada ou um representante autorizado do App Sons da Bicharada tenha sido notificado oralmente ou por escrito da possibilidade de tais danos. Como algumas jurisdições não permitem limitações em garantias implícitas, ou limitações de responsabilidade por danos consequentes ou incidentais, essas limitações podem não se aplicar a você.\n\n"
-
-        "Precisão dos materiais\n\n"
-
-        "Os materiais exibidos no App Sons da Bicharada podem incluir erros técnicos, tipográficos ou fotográficos. O App Sons da Bicharada não garante que qualquer material seja preciso, completo ou atual. O App Sons da Bicharada pode fazer alterações nos materiais contidos a qualquer momento, sem aviso prévio. No entanto, o App Sons da Bicharada não se compromete a atualizar os materiais.\n\n"
-
-        "6. Links\n\n"
-        "O Sons da Bicharada não analisou todos os sites vinculados ao seu site e não é responsável pelo conteúdo de nenhum site vinculado. A inclusão de qualquer link não implica endosso pelo App Sons da Bicharada do site. O uso de qualquer site vinculado é por conta e risco do usuário.\n\n"
-
-        "Modificações\n\n"
-
-        "O App Sons da Bicharada pode revisar estes termos de serviço  a qualquer momento, sem aviso prévio. Ao usar este App, você concorda em ficar vinculado à versão atual desses termos de serviço.\n\n"
-
-        "Lei aplicável\n\n"
-
-        "Estes termos e condições são regidos e interpretados de acordo com as leis do App Sons da Bicharada e você se submete irrevogavelmente à jurisdição exclusiva dos tribunais do estado ou país.\n\n"
-    </string>
+    <string name="name_animal">Nome do Animal</string>
+    <string name="animal_sound">Som do Animal</string>
+    <string name="mute">Mudo</string>
+    <string name="link_policy">https://luizmgms.wixsite.com/home/som-dos-animais</string>
+    <string name="id_of_app">ca-app-pub-9790401897088480~3575052466</string>
 </resources>
