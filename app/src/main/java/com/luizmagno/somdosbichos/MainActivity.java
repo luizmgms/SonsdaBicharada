@@ -1,37 +1,30 @@
 package com.luizmagno.somdosbichos;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.content.res.ResourcesCompat;
 
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.Toast;
 import java.util.ArrayList;
-
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -40,29 +33,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView buttonMute;
     private boolean mute = false;
     private RadioButton radioBtnSom;
-    private FrameLayout adContainerView;
-    private AdView mAdView;
+    private CoordinatorLayout mainCoordinator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Anúncio
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-
-        adContainerView = findViewById(R.id.ad_view_container);
-        adContainerView.post(new Runnable() {
-            @Override
-            public void run() {
-                loadBanner();
-            }
-        });
-
+        //Coordinator
+        mainCoordinator = findViewById(R.id.mainCoordinatorId);
 
         //toolbar
         Toolbar toolbar = findViewById(R.id.toolbarInMainId);
@@ -70,28 +49,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //CollapseToolbar
         CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapseToolbaInMainId);
-        collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
-        collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(android.R.color.white));
+        collapsingToolbarLayout.setExpandedTitleColor(Color.TRANSPARENT);
+        collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
 
         //Mute
         buttonMute = findViewById(R.id.buttonMuteId);
-        buttonMute.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mute) {
-                    buttonMute.setImageDrawable(
-                        ResourcesCompat.getDrawable(
-                            getResources(), R.drawable.ic_sound,null));
-                } else {
-                    buttonMute.setImageDrawable(
-                        ResourcesCompat.getDrawable(
-                            getResources(), R.drawable.ic_volume_off,null));
-                    if (mp.isPlaying()) {
-                        mp.stop();
-                    }
+        buttonMute.setOnClickListener(view -> {
+            if (mute) {
+                buttonMute.setImageDrawable(
+                    ResourcesCompat.getDrawable(
+                        getResources(), R.drawable.ic_sound,null));
+            } else {
+                buttonMute.setImageDrawable(
+                    ResourcesCompat.getDrawable(
+                        getResources(), R.drawable.ic_volume_off,null));
+                if (mp.isPlaying()) {
+                    mp.stop();
                 }
-                mute = !mute;
             }
+            mute = !mute;
         });
 
         //Audio
@@ -164,197 +140,56 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
         
         //Se não estiver mudo
         if (!mute) {
 
-            //Prepare Player
-            mp.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                @Override
-                public void onPrepared(MediaPlayer mp) {
-                    mp.start();
-                }
-            });
+            //Prepare Player, ao completar tocar
+            mp.setOnPreparedListener(MediaPlayer::start);
 
             try {
+
+                //Se estiver tocando, pare
                 if (mp.isPlaying()) {
                     mp.stop();
                 }
 
+                //Resert Player
                 mp.reset();
 
-                AssetFileDescriptor afd = null;
+                //Descritor de arquivo
+                AssetFileDescriptor afd;
 
-                switch (v.getId()) {
-                    case R.id.caoId:
-                        if (radioBtnSom.isChecked()){
-                            afd = getResources().openRawResourceFd(R.raw.cao);
-                        } else {
-                            afd = getResources().openRawResourceFd(R.raw.cachorro_desc);
-                        }
-                        Toast.makeText(this, R.string.cao, Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.gatoId:
-                        if (radioBtnSom.isChecked()){
-                            afd = getResources().openRawResourceFd(R.raw.gato);
-                        } else {
-                            afd = getResources().openRawResourceFd(R.raw.gato_desc);
-                        }
-                        Toast.makeText(this, R.string.gato, Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.leaoId:
-                        if (radioBtnSom.isChecked()){
-                            afd = getResources().openRawResourceFd(R.raw.leao);
-                        } else {
-                            afd = getResources().openRawResourceFd(R.raw.leao_desc);
-                        }
-                        Toast.makeText(this, R.string.leao, Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.macacoId:
-                        if (radioBtnSom.isChecked()){
-                            afd = getResources().openRawResourceFd(R.raw.macaco);
-                        } else {
-                            afd = getResources().openRawResourceFd(R.raw.macaco_desc);
-                        }
-                        Toast.makeText(this, R.string.macaco, Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.ovelhaId:
-                        if (radioBtnSom.isChecked()){
-                            afd = getResources().openRawResourceFd(R.raw.ovelha);
-                        } else {
-                            afd = getResources().openRawResourceFd(R.raw.ovelha_desc);
-                        }
-                        Toast.makeText(this, R.string.ovelha, Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.vacaId:
-                        if (radioBtnSom.isChecked()){
-                            afd = getResources().openRawResourceFd(R.raw.vaca);
-                        } else {
-                            afd = getResources().openRawResourceFd(R.raw.vaca_desc);
-                        }
-                        Toast.makeText(this, R.string.vaca, Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.elefanteId:
-                        if (radioBtnSom.isChecked()){
-                            afd = getResources().openRawResourceFd(R.raw.elefante);
-                        } else {
-                            afd = getResources().openRawResourceFd(R.raw.elefante_desc);
-                        }
-                        Toast.makeText(this, R.string.elefante, Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.patoId:
-                        if (radioBtnSom.isChecked()){
-                            afd = getResources().openRawResourceFd(R.raw.pato);
-                        } else {
-                            afd = getResources().openRawResourceFd(R.raw.pato_desc);
-                        }
-                        Toast.makeText(this, R.string.pato, Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.porcoId:
-                        if (radioBtnSom.isChecked()){
-                            afd = getResources().openRawResourceFd(R.raw.porco);
-                        } else {
-                            afd = getResources().openRawResourceFd(R.raw.porco_desc);
-                        }
-                        Toast.makeText(this, R.string.porco, Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.galoId:
-                        if (radioBtnSom.isChecked()){
-                            afd = getResources().openRawResourceFd(R.raw.galo);
-                        } else {
-                            afd = getResources().openRawResourceFd(R.raw.galo_desc);
-                        }
-                        Toast.makeText(this, R.string.galo, Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.abelhaId:
-                        if (radioBtnSom.isChecked()){
-                            afd = getResources().openRawResourceFd(R.raw.abelha);
-                        } else {
-                            afd = getResources().openRawResourceFd(R.raw.abelha_desc);
-                        }
-                        Toast.makeText(this, R.string.abelha, Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.galinhaId:
-                        if (radioBtnSom.isChecked()){
-                            afd = getResources().openRawResourceFd(R.raw.galinha);
-                        } else {
-                            afd = getResources().openRawResourceFd(R.raw.galinha_desc);
-                        }
-                        Toast.makeText(this, R.string.galinha, Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.baleiaId:
-                        if (radioBtnSom.isChecked()){
-                            afd = getResources().openRawResourceFd(R.raw.baleia);
-                        } else {
-                            afd = getResources().openRawResourceFd(R.raw.baleia_desc);
-                        }
-                        Toast.makeText(this, R.string.baleia, Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.golfinhoId:
-                        if (radioBtnSom.isChecked()){
-                            afd = getResources().openRawResourceFd(R.raw.golfinho);
-                        } else {
-                            afd = getResources().openRawResourceFd(R.raw.golfinho_desc);
-                        }
-                        Toast.makeText(this, R.string.golfinho, Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.pintoId:
-                        if (radioBtnSom.isChecked()){
-                            afd = getResources().openRawResourceFd(R.raw.pinto);
-                        } else {
-                            afd = getResources().openRawResourceFd(R.raw.pinto_desc);
-                        }
-                        Toast.makeText(this, R.string.pintinho, Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.cavaloId:
-                        if (radioBtnSom.isChecked()){
-                            afd = getResources().openRawResourceFd(R.raw.cavalo);
-                        } else {
-                            afd = getResources().openRawResourceFd(R.raw.cavalo_desc);
-                        }
-                        Toast.makeText(this, R.string.cavalo, Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.sapoId:
-                        if (radioBtnSom.isChecked()){
-                            afd = getResources().openRawResourceFd(R.raw.sapo);
-                        } else {
-                            afd = getResources().openRawResourceFd(R.raw.sapo_desc);
-                        }
-                        Toast.makeText(this, R.string.sapo, Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.passaroId:
-                        if (radioBtnSom.isChecked()){
-                            afd = getResources().openRawResourceFd(R.raw.passaro);
-                        } else {
-                            afd = getResources().openRawResourceFd(R.raw.passarinho_desc);
-                        }
-                        Toast.makeText(this, R.string.passaro, Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.ratoId:
-                        if (radioBtnSom.isChecked()){
-                            afd = getResources().openRawResourceFd(R.raw.rato);
-                        } else {
-                            afd = getResources().openRawResourceFd(R.raw.rato_desc);
-                        }
-                        Toast.makeText(this, R.string.rato, Toast.LENGTH_SHORT).show();
-                        break;
-                    default:
-                        Toast.makeText(this, "Ocorreu um Erro!", Toast.LENGTH_SHORT).show();
-                        break;
+                //Id's id[0] = Nome, id[1] = Raw Som, id[2] = Raw Descrição
+                int[] id = getNameSoundAnimal(v);
+
+                //Se Som ativo, executa som do animal
+                if (radioBtnSom.isChecked()){
+                    afd = getResources().openRawResourceFd(id[1]);
+                } else {
+                    //Se não, descrição
+                    afd = getResources().openRawResourceFd(id[2]);
                 }
 
+                //Set Data e PrepareAsync
                 if (afd != null) {
                     mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
                     mp.prepareAsync();
                 }
 
+                //Show SnackBar
+                Snackbar.make(mainCoordinator, id[0], Snackbar.LENGTH_SHORT).show();
+
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
-            Toast.makeText(this, "Está mudo!", Toast.LENGTH_LONG).show();
+            //Mudo
+            Snackbar.make(mainCoordinator, R.string.is_mute, Snackbar.LENGTH_SHORT).show();
         }
         
     }
@@ -373,7 +208,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_TEXT, str_to_share);
         sendIntent.setType("text/plain");
-        Intent shareIntent = Intent.createChooser(sendIntent, null);
+        Intent shareIntent = Intent.createChooser(sendIntent,
+                getResources().getString(R.string.title_shared));
         startActivity(shareIntent);
     }
 
@@ -390,19 +226,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btnAvaliarApp = inflate.findViewById(R.id.buttonAvalieInAboutId);
         Button btnSharedApp = inflate.findViewById(R.id.buttonShareInAboutId);
 
-        btnSharedApp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startShared(getResources().getString(R.string.text_share_link));
-            }
-        });
+        btnSharedApp.setOnClickListener(v -> startShared(
+                getResources().getString(R.string.text_share_link)));
 
-        btnAvaliarApp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openUrl(getResources().getString(R.string.link_to_avalie));
-            }
-        });
+        btnAvaliarApp.setOnClickListener((View v) -> openUrl(
+                getResources().getString(R.string.link_to_avalie)));
     }
 
     private void openUrl (String url) {
@@ -411,32 +239,117 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(i);
     }
 
-    private AdSize getAdSize() {
-        // Step 2 - Determine the screen width (less decorations) to use for the ad width.
-        Display display = getWindowManager().getDefaultDisplay();
-        DisplayMetrics outMetrics = new DisplayMetrics();
-        display.getMetrics(outMetrics);
+    @SuppressLint("NonConstantResourceId")
+    private int[] getNameSoundAnimal(View animalView) {
 
-        float widthPixels = outMetrics.widthPixels;
-        float density = outMetrics.density;
+        int[] animal = {0, 0, 0};
 
-        int adWidth = (int) (widthPixels / density);
+        switch (animalView.getId()) {
+            case R.id.caoId:
+                animal[0] = R.string.cao;
+                animal[1] = R.raw.cao;
+                animal[2] = R.raw.cachorro_desc;
+                break;
+            case R.id.gatoId:
+                animal[0] = R.string.gato;
+                animal[1] = R.raw.gato;
+                animal[2] = R.raw.gato_desc;
+                break;
+            case R.id.leaoId:
+                animal[0] = R.string.leao;
+                animal[1] = R.raw.leao;
+                animal[2] = R.raw.leao_desc;
+                break;
+            case R.id.macacoId:
+                animal[0] = R.string.macaco;
+                animal[1] = R.raw.macaco;
+                animal[2] = R.raw.macaco_desc;
+                break;
+            case R.id.ovelhaId:
+                animal[0] = R.string.ovelha;
+                animal[1] = R.raw.ovelha;
+                animal[2] = R.raw.ovelha_desc;
+                break;
+            case R.id.vacaId:
+                animal[0] = R.string.vaca;
+                animal[1] = R.raw.vaca;
+                animal[2] = R.raw.vaca_desc;
+                break;
+            case R.id.elefanteId:
+                animal[0] = R.string.elefante;
+                animal[1] = R.raw.elefante;
+                animal[2] = R.raw.elefante_desc;
+                break;
+            case R.id.patoId:
+                animal[0] = R.string.pato;
+                animal[1] = R.raw.pato;
+                animal[2] = R.raw.pato_desc;
+                break;
+            case R.id.porcoId:
+                animal[0] = R.string.porco;
+                animal[1] = R.raw.porco;
+                animal[2] = R.raw.porco_desc;
+                break;
+            case R.id.galoId:
+                animal[0] = R.string.galo;
+                animal[1] = R.raw.galo;
+                animal[2] = R.raw.galo_desc;
+                break;
+            case R.id.abelhaId:
+                animal[0] = R.string.abelha;
+                animal[1] = R.raw.abelha;
+                animal[2] = R.raw.abelha_desc;
+                break;
+            case R.id.galinhaId:
+                animal[0] = R.string.galinha;
+                animal[1] = R.raw.galinha;
+                animal[2] = R.raw.galinha_desc;
+                break;
+            case R.id.baleiaId:
+                animal[0] = R.string.baleia;
+                animal[1] = R.raw.baleia;
+                animal[2] = R.raw.baleia_desc;
+                break;
+            case R.id.golfinhoId:
+                animal[0] = R.string.golfinho;
+                animal[1] = R.raw.golfinho;
+                animal[2] = R.raw.golfinho_desc;
+                break;
+            case R.id.pintoId:
+                animal[0] = R.string.pintinho;
+                animal[1] = R.raw.pinto;
+                animal[2] = R.raw.pinto_desc;
+                break;
+            case R.id.cavaloId:
+                animal[0] = R.string.cavalo;
+                animal[1] = R.raw.cavalo;
+                animal[2] = R.raw.cavalo_desc;
+                break;
+            case R.id.sapoId:
+                animal[0] = R.string.sapo;
+                animal[1] = R.raw.sapo;
+                animal[2] = R.raw.sapo_desc;
+                break;
+            case R.id.passaroId:
+                animal[0] = R.string.passaro;
+                animal[1] = R.raw.passaro;
+                animal[2] = R.raw.passarinho_desc;
+                break;
+            case R.id.ratoId:
+                animal[0] = R.string.rato;
+                animal[1] = R.raw.rato;
+                animal[2] = R.raw.rato_desc;
+                break;
+            default:
+                animal[0] = R.string.erro;
+                animal[1] = 0;
+                animal[2] = 0;
+                break;
 
-        // Step 3 - Get adaptive ad size and return for setting on the ad view.
-        return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidth);
-    }
+        }
 
-    private void loadBanner() {
-        mAdView = new AdView(this);
-        mAdView.setAdUnitId(Developer.ID_OF_ANUN);
-        adContainerView.removeAllViews();
-        adContainerView.addView(mAdView);
 
-        AdSize adSize = getAdSize();
-        mAdView.setAdSize(adSize);
-
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        return animal;
     }
 
 }

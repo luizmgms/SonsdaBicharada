@@ -29,9 +29,12 @@
     <string name="cancel">Cancelar</string>
     <string name="link_to_avalie">https://play.google.com/store/apps/details?id=com.luizmagno.somdosbichos</string>
     <string name="menu_policy">Política de Privacidade</string>
-    <string name="name_animal">Nome do Animal</string>
-    <string name="animal_sound">Som do Animal</string>
+    <string name="name_animal">Nome</string>
+    <string name="animal_sound">Som</string>
     <string name="mute">Mudo</string>
     <string name="link_policy">https://luizmgms.wixsite.com/home/som-dos-animais</string>
-    <string name="id_of_app">ca-app-pub-9790401897088480~3575052466</string>
+    <string name="both">Ambos</string>
+    <string name="is_mute">Está Mudo!</string>
+    <string name="erro">Ocorreu um Erro!</string>
+    <string name="title_shared">Compartilhar Sons da Bicharada com…</string>
 </resources>
