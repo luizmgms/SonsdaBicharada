@@ -8,6 +8,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -157,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     mp.stop();
                 }
 
-                //Resert Player
+                //Reset Player
                 mp.reset();
 
                 //Descritor de arquivo
@@ -191,6 +192,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //Mudo
             Snackbar.make(mainCoordinator, R.string.is_mute, Snackbar.LENGTH_SHORT).show();
         }
+
+        LottieAnimationView lottieAnimationView = findViewById(R.id.caoId);
+        lottieAnimationView.playAnimation();
         
     }
 
@@ -242,108 +246,128 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @SuppressLint("NonConstantResourceId")
     private int[] getNameSoundAnimal(View animalView) {
 
-        int[] animal = {0, 0, 0};
+        int[] animal = {0, 0, 0, 0};
 
         switch (animalView.getId()) {
             case R.id.caoId:
                 animal[0] = R.string.cao;
                 animal[1] = R.raw.cao;
                 animal[2] = R.raw.cachorro_desc;
+                animal[3] = R.id.caoId;
                 break;
             case R.id.gatoId:
                 animal[0] = R.string.gato;
                 animal[1] = R.raw.gato;
                 animal[2] = R.raw.gato_desc;
+                animal[3] = R.id.gatoId;
                 break;
             case R.id.leaoId:
                 animal[0] = R.string.leao;
                 animal[1] = R.raw.leao;
                 animal[2] = R.raw.leao_desc;
+                animal[3] = R.id.leaoId;
                 break;
             case R.id.macacoId:
                 animal[0] = R.string.macaco;
                 animal[1] = R.raw.macaco;
                 animal[2] = R.raw.macaco_desc;
+                animal[3] = R.id.macacoId;
                 break;
             case R.id.ovelhaId:
                 animal[0] = R.string.ovelha;
                 animal[1] = R.raw.ovelha;
                 animal[2] = R.raw.ovelha_desc;
+                animal[3] = R.id.ovelhaId;
                 break;
             case R.id.vacaId:
                 animal[0] = R.string.vaca;
                 animal[1] = R.raw.vaca;
                 animal[2] = R.raw.vaca_desc;
+                animal[3] = R.id.vacaId;
                 break;
             case R.id.elefanteId:
                 animal[0] = R.string.elefante;
                 animal[1] = R.raw.elefante;
                 animal[2] = R.raw.elefante_desc;
+                animal[3] = R.id.elefanteId;
                 break;
             case R.id.patoId:
                 animal[0] = R.string.pato;
                 animal[1] = R.raw.pato;
                 animal[2] = R.raw.pato_desc;
+                animal[3] = R.id.patoId;
                 break;
             case R.id.porcoId:
                 animal[0] = R.string.porco;
                 animal[1] = R.raw.porco;
                 animal[2] = R.raw.porco_desc;
+                animal[3] = R.id.porcoId;
                 break;
             case R.id.galoId:
                 animal[0] = R.string.galo;
                 animal[1] = R.raw.galo;
                 animal[2] = R.raw.galo_desc;
+                animal[3] = R.id.galoId;
                 break;
             case R.id.abelhaId:
                 animal[0] = R.string.abelha;
                 animal[1] = R.raw.abelha;
                 animal[2] = R.raw.abelha_desc;
+                animal[3] = R.id.abelhaId;
                 break;
             case R.id.galinhaId:
                 animal[0] = R.string.galinha;
                 animal[1] = R.raw.galinha;
                 animal[2] = R.raw.galinha_desc;
+                animal[3] = R.id.galinhaId;
                 break;
             case R.id.baleiaId:
                 animal[0] = R.string.baleia;
                 animal[1] = R.raw.baleia;
                 animal[2] = R.raw.baleia_desc;
+                animal[3] = R.id.baleiaId;
                 break;
             case R.id.golfinhoId:
                 animal[0] = R.string.golfinho;
                 animal[1] = R.raw.golfinho;
                 animal[2] = R.raw.golfinho_desc;
+                animal[3] = R.id.golfinhoId;
                 break;
             case R.id.pintoId:
                 animal[0] = R.string.pintinho;
                 animal[1] = R.raw.pinto;
                 animal[2] = R.raw.pinto_desc;
+                animal[3] = R.id.pintoId;
                 break;
             case R.id.cavaloId:
                 animal[0] = R.string.cavalo;
                 animal[1] = R.raw.cavalo;
                 animal[2] = R.raw.cavalo_desc;
+                animal[3] = R.id.cavaloId;
                 break;
             case R.id.sapoId:
                 animal[0] = R.string.sapo;
                 animal[1] = R.raw.sapo;
                 animal[2] = R.raw.sapo_desc;
+                animal[3] = R.id.sapoId;
                 break;
             case R.id.passaroId:
                 animal[0] = R.string.passaro;
                 animal[1] = R.raw.passaro;
                 animal[2] = R.raw.passarinho_desc;
+                animal[3] = R.id.passaroId;
                 break;
             case R.id.ratoId:
                 animal[0] = R.string.rato;
                 animal[1] = R.raw.rato;
                 animal[2] = R.raw.rato_desc;
+                animal[3] = R.id.ratoId;
                 break;
             default:
                 animal[0] = R.string.erro;
                 animal[1] = 0;
                 animal[2] = 0;
+                animal[3] = 0;
                 break;
 
         }

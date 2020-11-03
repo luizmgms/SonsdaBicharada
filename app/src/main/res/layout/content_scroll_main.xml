@@ -13,12 +13,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
+        <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/caoId"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/cachorro_b"
+            app:lottie_rawRes="@raw/cachorrolatindo"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="false"
             android:contentDescription="@string/cao"
             app:layout_constraintEnd_toStartOf="@+id/gatoId"
             app:layout_constraintStart_toStartOf="parent"

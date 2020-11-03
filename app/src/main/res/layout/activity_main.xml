@@ -78,7 +78,7 @@
                 android:textStyle="bold"
                 android:buttonTint="@android:color/white"
                 tools:targetApi="lollipop"/>
-            <RadioButton android:id="@+id/radio_both"
+            <!--<RadioButton android:id="@+id/radio_both"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/both"
@@ -87,7 +87,7 @@
                 android:textStyle="bold"
                 android:padding="@dimen/padd_radio_buttons"
                 android:buttonTint="@android:color/white"
-                tools:targetApi="lollipop"/>
+                tools:targetApi="lollipop"/>-->
         </RadioGroup>
 
     </com.google.android.material.appbar.AppBarLayout>
