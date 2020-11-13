@@ -3,6 +3,7 @@ package com.luizmagno.somdosbichos;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -12,6 +13,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -372,8 +374,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
 
-
         return animal;
     }
 
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            mainCoordinator.setBackgroundResource(R.drawable.folhagem_b);
+        } else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            mainCoordinator.setBackgroundResource(R.drawable.folhagem_a);
+        }
+    }
 }
