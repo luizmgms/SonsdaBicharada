@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:fitsSystemWindows="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:id="@+id/appBarLayoutId">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapseToolbaInMainId"
@@ -46,55 +47,12 @@
                 app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="4dp"
-            android:gravity="center"
-            android:padding="@dimen/padd_radio_buttons">
-            <ImageView
-                android:id="@+id/buttonMuteId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_sound"
-                android:padding="@dimen/padd_radio_buttons"
-                android:contentDescription="@string/mute"/>
-            <RadioButton android:id="@+id/radio_som"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/animal_sound"
-                android:textColor="@android:color/white"
-                android:buttonTint="@android:color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:padding="@dimen/padd_radio_buttons"
-                tools:targetApi="lollipop"/>
-            <RadioButton android:id="@+id/radio_nome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/name_animal"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                android:padding="@dimen/padd_radio_buttons"
-                android:textStyle="bold"
-                android:buttonTint="@android:color/white"
-                tools:targetApi="lollipop"/>
-            <!--<RadioButton android:id="@+id/radio_both"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/both"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:padding="@dimen/padd_radio_buttons"
-                android:buttonTint="@android:color/white"
-                tools:targetApi="lollipop"/>-->
-        </RadioGroup>
+
+        <include layout="@layout/radio_buttons_group" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_scroll_main" />
+    <include layout="@layout/content_list_main" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
