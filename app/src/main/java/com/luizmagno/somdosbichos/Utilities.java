@@ -4,6 +4,13 @@ import java.util.ArrayList;
 
 public class Utilities {
 
+    public static ArrayList<Integer> getListRawIds() {
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(R.raw.cachorro_latindo_1);
+        list.add(R.raw.gato_miando_1);
+        return list;
+    }
+
     public static ArrayList<Integer> getListAnimalsIds() {
         ArrayList<Integer> list = new ArrayList<>();
 
@@ -43,7 +50,7 @@ public class Utilities {
                 break;
             case 1:
                 animal[0] = R.string.gato;
-                animal[1] = R.raw.gato;
+                animal[1] = R.raw.gato_miando;
                 animal[2] = R.raw.gato_desc;
                 animal[3] = R.id.gatoId;
                 break;
@@ -151,9 +158,6 @@ public class Utilities {
                 break;
             default:
                 animal[0] = R.string.erro;
-                animal[1] = 0;
-                animal[2] = 0;
-                animal[3] = 0;
                 break;
 
         }

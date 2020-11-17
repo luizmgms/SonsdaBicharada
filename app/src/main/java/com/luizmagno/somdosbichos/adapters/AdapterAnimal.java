@@ -51,8 +51,8 @@ public class AdapterAnimal extends RecyclerView.Adapter<AdapterAnimal.ItemAnimal
     @Override
     public void onBindViewHolder(@NonNull ItemAnimalViewHolder holder, int position) {
 
-        //PEGAR ID DO RAW RES. A LISTA DEVE CONTER OS IDS DOS RAWS
-        holder.lottieAnimationView.setAnimation(R.raw.cachorro_latindo_1);
+        int id = listIdsAnimals.get(position);
+        holder.lottieAnimationView.setAnimation(id);
         holder.lottieAnimationView.setOnClickListener(v -> play(v, position));
     }
 
@@ -67,12 +67,10 @@ public class AdapterAnimal extends RecyclerView.Adapter<AdapterAnimal.ItemAnimal
         if (!mainActivity.mute) {
 
             try {
-
                 //Se estiver tocando, pare
                 if (mp.isPlaying()) {
                     mp.stop();
                 }
-
                 //Reset Player
                 mp.reset();
 

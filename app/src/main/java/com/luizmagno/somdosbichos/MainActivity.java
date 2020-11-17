@@ -29,6 +29,7 @@ import com.luizmagno.somdosbichos.adapters.AdapterAnimal;
 import java.util.ArrayList;
 
 import static com.luizmagno.somdosbichos.Utilities.getListAnimalsIds;
+import static com.luizmagno.somdosbichos.Utilities.getListRawIds;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -68,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
         radioBtnSom = findViewById(R.id.radio_som);
         radioBtnSom.setChecked(true);
 
-        //Lista das Ids das View's dos animais
-        ArrayList<Integer> animals = getListAnimalsIds();
+        //Lista das Ids das raw's de animaçãoes dos animais
+        ArrayList<Integer> animals = getListRawIds();
 
         //Player
         mp = new MediaPlayer();
